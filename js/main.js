@@ -1,5 +1,6 @@
 $("#map").mousemove(function( event ) {
   var map = $("#map");
+  map.css("opacity", .3);
 
   var mapPos = map.position();
 
@@ -7,11 +8,16 @@ $("#map").mousemove(function( event ) {
   var mapHeight = map.height();
 
   var xPos = event.pageX - mapPos.left;
-  var xPcent = ((xPos / mapWidth) * 100).toPrecision(3);
+  var xPcent = ((xPos / mapWidth) * 100);
   var yPos = event.pageY - mapPos.top;
-  var yPcent = ((yPos / mapWidth) * 100).toPrecision(3);
+  var yPcent = ((yPos / mapWidth) * 100);
 
   //var pageCoords = "( " + xPos + ", " + yPos + " )";
-  var pageCoords = "( " + xPcent + "%, " + yPcent + "% )";
+  var pageCoords = "( " + xPcent.toPrecision(3) + "%, " +
+    yPcent.toPrecision(3) + "% )";
+
   $( "span:first" ).text( "( x,y ) : " + pageCoords );
+
+  $("#map").css("opacity", xPcent / 100);
+
 });
