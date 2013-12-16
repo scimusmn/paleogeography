@@ -2,6 +2,10 @@
    Author's custom styles
    ========================================================================== */
 
+body{
+  padding-top: 20px;
+}
+
 @media (min-width: 1920px) {
   .container {
     max-width: 1890px;
