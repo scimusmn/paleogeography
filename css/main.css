@@ -18,6 +18,13 @@ body{
   display: table-cell;
 }
 
+#position-label {
+  position: fixed;
+  top: 925px;
+  background: #FFF;
+  padding: 10px;
+}
+
 .present-day {
   background: #2b0209;
 }

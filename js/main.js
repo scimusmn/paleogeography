@@ -99,6 +99,10 @@ $( document ).ready(function() {
 			var xPcent = ((xPos / mapWidth) * 100);
 			var yPos = event.pageY - mapPos.top;
 			var yPcent = ((yPos / mapWidth) * 100);
+			var interval = parseInt((xPcent / 100) * paleoImages.length);
+
+			$("#position-label").attr("style", "left: " + xPos + "px;");
+			$("#position-label").html(paleoImages[interval].description);
 
 			//var pageCoords = "( " + xPos + ", " + yPos + " )";
 			var pageCoords = "( " + xPcent.toPrecision(3) + "%, " +
@@ -108,7 +112,6 @@ $( document ).ready(function() {
 
 			var timeImage = '';
 
-			var interval = parseInt((xPcent / 100) * paleoImages.length);
 			if (interval != currentInterval) {
 				timeImage = paleoImages[interval].file;
 
@@ -116,10 +119,8 @@ $( document ).ready(function() {
 				//console.log("Previous clas" + previousClass);
 				eraClass = paleoImages[interval].eraClass;
 
-				//$("." + previousClass).removeClass("era-active");
 				$(".era").removeClass("era-active");
 				$("." + eraClass).addClass("era-active");
-				//console.log(timeImage);
 
 				// It's probably faster to move the image rather than changing the src
 				// But I wonder how large of an image can we load into memory
