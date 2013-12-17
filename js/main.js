@@ -62,23 +62,16 @@ $("#map").mousemove(function( event ) {
     $( "span:first" ).text( "( x,y ) : " + pageCoords );
 
     var timeImage = '';
-    //console.log(paleoImages.length);
-    //console.log(paleoImages[1].file);
 
     var interval = parseInt((xPcent / 100) * paleoImages.length);
-    //console.log(interval);
 
     timeImage = paleoImages[interval].file;
     console.log(timeImage);
 
-    //if (xPcent >= 50)
-      //timeImage = paleoImages[interval].file;
-    //else
-      //timeImage = paleoImages[].file;
-
+    // It's probably faster to move the image rather than changing the src
+    // But I wonder how large of an image can we load into memory
     $("#map").attr("src", "img/blakey/" + timeImage);
 
   }
 });
 
-// Debug console info
