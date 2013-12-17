@@ -7,17 +7,15 @@ body{
 }
 
 #timeline {
-  background: #BBB;
-  display: block;
-  height: 20px
+  background: #fcb8c4;
+  height: 70px;
+  width: 100%;
 }
 
 .era {
-  border-right: 1px solid #333
-  display: block;
-  height: 20px;
-  width: 30px;
+  height: 70px;
   float: left;
+  display: table-cell;
 }
 
 .present-day {
@@ -101,6 +99,15 @@ body{
 .late-protoerozoic {
   background: #fba8b6;
 }
+.later-protoerozoic {
+  background: #fcb8c4;
+}
+
+.era-active {
+  background: #000;
+}
+
+
 @media (min-width: 1920px) {
   .container {
     max-width: 1890px;
