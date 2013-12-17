@@ -6,6 +6,101 @@ body{
   padding-top: 20px;
 }
 
+#timeline {
+  background: #BBB;
+  display: block;
+  height: 20px
+}
+
+.era {
+  border-right: 1px solid #333
+  display: block;
+  height: 20px;
+  width: 30px;
+  float: left;
+}
+
+.present-day {
+  background: #2b0209;
+}
+.pleistocene {
+  background: #3b030d;
+}
+.holocene {
+  background: #4c0310;
+}
+.miocene {
+  background: #5c0413;
+}
+.late-eocene {
+  background: #6c0517;
+}
+.eocene {
+  background: #7c061a;
+}
+.kt-boundary {
+  background: #8d061e;
+}
+.late-cretaceous {
+  background: #9d0721;
+}
+.early-cretaceous {
+  background: #ad0825;
+}
+.late-jurassic {
+  background: #bd0928;
+}
+.middle-triasic {
+  background: #ce092c;
+}
+.late-triasic {
+  background: #de0a2f;
+}
+.middle-triasic {
+  background: #ee0b32;
+}
+.late-permian {
+  background: #f4163c;
+}
+.early-permian {
+  background: #f5264a;
+}
+.late-pennsylvanian {
+  background: #f63658;
+}
+.middle-mississippian {
+  background: #f64665;
+}
+.late-devonian {
+  background: #f75773;
+}
+.early-devonian {
+  background: #f86780;
+}
+.late-silurian {
+  background: #f63658;
+}
+.middle-silurian {
+  background: #f64665;
+}
+.early-silurian {
+  background: #f75773;
+}
+.late-ordovician {
+  background: #f86780;
+}
+.middle-ordovician {
+  background: #f9778e;
+}
+.late-cambrian {
+  background: #f9879b;
+}
+.early-cambrian {
+  background: #fa98a9;
+}
+.late-protoerozoic {
+  background: #fba8b6;
+}
 @media (min-width: 1920px) {
   .container {
     max-width: 1890px;
