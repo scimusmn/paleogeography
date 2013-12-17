@@ -1,3 +1,15 @@
+// Prevent image dragging
+//
+// Since this is a touch screen experience, we don't want users to be able
+// to touch and drag the main map image around. This prevents dragging.
+document.getElementById('map').ondragstart = function() { return false; };
+
+
+
+
+
+
+
 $("#map").mousemove(function( event ) {
   var map = $("#map");
   map.css("opacity", .3);
