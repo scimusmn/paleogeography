@@ -5,6 +5,8 @@
     //
     // Since this is a touch screen experience, we don't want users to be able
     // to touch and drag the main map image around. This prevents dragging.
+	//
+	// TODO - Build this into Backbone
 	document.getElementById('map').ondragstart = function() { return false; };
 
 	/**
