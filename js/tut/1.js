@@ -1,7 +1,8 @@
 (function($){
 	var ListView = Backbone.View.extend({
 		// Attaches this.el (aka element) to an existing element.
-		// Here, the body in your HTML.
+		// Here, the body in your HTML. We're still using jQuery here to
+		// grab the DOM element.
 		el: $('body'),
 		initialize: function(){
 			// Retain context for this within methods
