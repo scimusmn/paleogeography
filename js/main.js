@@ -94,9 +94,12 @@ $( document ).ready(function() {
 
 	totalWidth = totalWidth.toPrecision(2);
 	//console.log("Total width: " + totalWidth);
+
 	// Removing a small fudge factor to get the % floating to work.
 	// This is purely the result of trial and error and is a hack right now.
+	// TODO fix this hack
 	lastWidth = 100 - totalWidth - 0.5;
+
 	$('.era-last').attr("style", "display: inline-block;");
 	$('.era-last').attr("style", "width: " + lastWidth + "%;");
 
