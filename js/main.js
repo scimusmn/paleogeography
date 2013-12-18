@@ -53,10 +53,10 @@ $( document ).ready(function() {
     for (var key in paleoImages) {
 
 		colorModifier = (1 / (key + 1)) * 10;
-		console.log(colorModifier);
+		//console.log(colorModifier);
 		periodColor = baseColor.lighten( 0.07 );
 		baseColor = Color(periodColor.hexString());
-		console.log(periodColor.hexString());
+		//console.log(periodColor.hexString());
 
 		var periods = paleoImages.length - 1;
 		if (parseInt(key) != periods) {
