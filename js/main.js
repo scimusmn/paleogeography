@@ -6,6 +6,11 @@ $( document ).ready(function() {
     // to touch and drag the main map image around. This prevents dragging.
     document.getElementById('map').ondragstart = function() { return false; };
 
+	// Base color
+	// Start the left side of the timeline with a deep maroon.
+	// This is just a placeholder color.
+	var baseColor = Color("#300006");
+
     // Define image array
     //
     // List of image files and their descriptions
@@ -45,7 +50,13 @@ $( document ).ready(function() {
 
 	var totalWidth = 0;
 
-    for (var key in paleoImages) {;
+    for (var key in paleoImages) {
+
+		colorModifier = (1 / (key + 1)) * 10;
+		console.log(colorModifier);
+		periodColor = baseColor.lighten( 0.07 );
+		baseColor = Color(periodColor.hexString());
+		console.log(periodColor.hexString());
 
 		var periods = paleoImages.length - 1;
 		if (parseInt(key) != periods) {
@@ -70,6 +81,10 @@ $( document ).ready(function() {
 			// Set the era width
 			$('.' + eraClass).attr("style", "width: " + eraWidth + "%;");
 			//console.log(eraWidth);
+
+			//Set the era background color
+			$('.' + eraClass).css("background", periodColor.hexString());
+
 
 			paleoImages[key].myr = '30';
 			var obj = paleoImages[key];
