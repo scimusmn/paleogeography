@@ -62,4 +62,25 @@
 	var History = Backbone.Collection.extend({
 		model: Era
 	});
+
+	/**
+	 * Views
+	 *
+	 * Our primary view is just for looking at the map initially.
+	 */
+	var MapView = Backbone.View.extend({
+        el: $("#map"),
+
+		initialize: function() {
+			_.bindAll(this, 'render');
+			this.render();
+		},
+
+		render: function(){
+			$(this.el).append("Hello World");
+		}
+	});
+
+	var mapView = new MapView();
+
 })(jQuery);
