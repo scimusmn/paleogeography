@@ -80,6 +80,12 @@
 	var MapView = Backbone.View.extend({
         el: $('#map'),
 
+		// Run the cycleImage function when the main image is clicked.
+		// Eventually we'll add a click and drag event.
+		events: {
+			'click p': 'cycleImage',
+		},
+
 		initialize: function() {
 			//_.bindAll(this, 'render');
             this.collection = new History(eras);
