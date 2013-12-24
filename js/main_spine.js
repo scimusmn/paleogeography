@@ -105,6 +105,14 @@
             //}, this);
 		},
 
+		cycleImage: function () {
+			console.log("Clicked");
+            this.remove();
+
+			//$(this.el).attr('src', 'img/blakey/' +
+							//_.last(this.collection.models).attributes.file);
+		}
+
 	});
 
 	var mapView = new MapView();
