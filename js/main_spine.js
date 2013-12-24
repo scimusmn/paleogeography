@@ -94,8 +94,7 @@
 
 		render: function(){
 			$(this.el).attr('src', 'img/blakey/' +
-							_.first(this.collection.models).attributes.file);
-			console.log(_.first(this.collection.models).attributes.file);
+							_.last(this.collection.models).attributes.file);
 
 			//$(this.el).attr('src', 'img/blakey/' + _.min(this.collection.models);
 
