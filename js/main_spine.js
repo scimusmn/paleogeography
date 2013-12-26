@@ -78,7 +78,7 @@
 	 * Our primary view is just for looking at the map initially.
 	 */
 	var MapView = Backbone.View.extend({
-        el: $('#map'),
+        el: $('body'),
 
 		// Run the cycleImage function when the main image is clicked.
 		// Eventually we'll add a click and drag event.
