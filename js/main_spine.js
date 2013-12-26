@@ -1,4 +1,3 @@
-
 (function($){
 
     // Prevent image dragging
@@ -83,34 +82,35 @@
 		// Run the cycleImage function when the main image is clicked.
 		// Eventually we'll add a click and drag event.
 		events: {
-			'click p': 'cycleImage',
+			'click #map': 'cycleImage',
 		},
 
 		initialize: function() {
-			//_.bindAll(this, 'render');
-            this.collection = new History(eras);
+
+			_.bindAll(this, 'render', 'cycleImage');
+
+			// Add the collection to the this object.
+			this.collection = new History(eras);
+
+			// Run the render function. I think this is part of the pattern
+			// convention.
 			this.render();
 		},
 
+		// Render the initial state of the map.
 		render: function(){
-			$(this.el).attr('src', 'img/blakey/' +
-							_.last(this.collection.models).attributes.file);
-
-			//$(this.el).attr('src', 'img/blakey/' + _.min(this.collection.models);
-
-            //_.each(this.collection.models, function (item) {
-				//$(this.el).attr('src', 'img/blakey/' + item.attributes.file);
-				//console.log(item.attributes.file);
-                ////this.renderMap(item);
-            //}, this);
+			$('#map').attr('src', 'img/blakey/' +
+							_.first(this.collection.models).attributes.file);
 		},
 
+		// Cycle the map
+		//
+		// Right now this one just changes the image to the last image.
+		// Up next it will cycle through the images.
 		cycleImage: function () {
 			console.log("Clicked");
-            this.remove();
-
-			//$(this.el).attr('src', 'img/blakey/' +
-							//_.last(this.collection.models).attributes.file);
+			$('#map').attr('src', 'img/blakey/' +
+							_.last(this.collection.models).attributes.file);
 		}
 
 	});
