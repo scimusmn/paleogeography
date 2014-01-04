@@ -83,6 +83,7 @@
 		// Eventually we'll add a click and drag event.
 		events: {
 			'click #map': 'cycleImage',
+			'mousemove': 'mousemove',
 		},
 
 		initialize: function() {
@@ -91,6 +92,13 @@
 
 			// Add the collection to the this object.
 			this.collection = new History(eras);
+
+			// Get some details about the map that we only need to get once.
+			this.map = $("#map");
+			this.mapPos = this.map.position();
+			console.log('Map Position', this.mapPos);
+			this.mapWidth = $("#map").innerWidth();
+			this.mapHeight = $("#map").innerHeight();
 
 			// Run the render function. I think this is part of the pattern
 			// convention.
@@ -108,9 +116,28 @@
 		// Right now this one just changes the image to the last image.
 		// Up next it will cycle through the images.
 		cycleImage: function () {
-			console.log("Clicked");
+			//console.log('Click');
 			$('#map').attr('src', 'img/blakey/' +
 							_.last(this.collection.models).attributes.file);
+		},
+
+		mousemove: function(e) {
+			xPos = event.pageX - this.mapPos.left;
+			yPos = event.pageX - this.mapPos.top;
+			//console.log("Mouse coordinates", xPos + ", " + yPos);
+			xPcent = ((xPos / this.mapWidth) * 100);
+			yPcent = ((yPos / this.mapHeight) * 100);
+			console.log('Mouse pos', xPcent + '%, ' + yPcent + '%');
+			//
+			//$('#coords').html(xPcent);
+			//console.log(xPcent);
+			//console.log('Map Position', this.mapPos);
+			//console.log(this.mapWidth);
+			//var yPos = event.pageY - mapPos.top;
+			//var yPcent = ((yPos / mapWidth) * 100);
+			//var interval = parseInt((xPcent / 100) * 16);
+			//var interval = parseInt((xPcent / 100) * paleoImages.length);
+			//console.log(interval);
 		}
 
 	});
