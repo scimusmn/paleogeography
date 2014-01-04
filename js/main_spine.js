@@ -122,22 +122,23 @@
 		},
 
 		mousemove: function(e) {
+			// Get mouse position
 			xPos = event.pageX - this.mapPos.left;
 			yPos = event.pageX - this.mapPos.top;
 			//console.log("Mouse coordinates", xPos + ", " + yPos);
+
+			// Turn it into a percentage of the map width
 			xPcent = ((xPos / this.mapWidth) * 100);
 			yPcent = ((yPos / this.mapHeight) * 100);
-			console.log('Mouse pos', xPcent + '%, ' + yPcent + '%');
-			//
-			//$('#coords').html(xPcent);
-			//console.log(xPcent);
-			//console.log('Map Position', this.mapPos);
-			//console.log(this.mapWidth);
-			//var yPos = event.pageY - mapPos.top;
-			//var yPcent = ((yPos / mapWidth) * 100);
-			//var interval = parseInt((xPcent / 100) * 16);
+			mousePos = xPcent.toFixed(2) + '%, ' + yPcent.toFixed(2) + '%';
+			//console.log('Mouse pos', mousePos);
+
+			// Turn mouse position into a interval of the count of the
+			// paleoImages array length.
+			var interval = parseInt((xPcent / 100) * 16);
 			//var interval = parseInt((xPcent / 100) * paleoImages.length);
-			//console.log(interval);
+			$('#info').html(' - Mouse: ' + mousePos +
+							', Interval: ' + interval);
 		}
 
 	});
