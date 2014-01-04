@@ -135,10 +135,16 @@
 
 			// Turn mouse position into a interval of the count of the
 			// paleoImages array length.
-			var interval = parseInt((xPcent / 100) * 16);
-			//var interval = parseInt((xPcent / 100) * paleoImages.length);
+			var interval = parseInt((xPcent / 100) *
+									this.collection.models.length);
+
+			// Set the current image based on the mouse position interval
+			currentImg = this.collection.models[interval].attributes.file;
 			$('#info').html(' - Mouse: ' + mousePos +
-							', Interval: ' + interval);
+							', Interval: ' + interval +
+							', currentImg: ' + currentImg);
+			$('#map').attr('src', 'img/blakey/' + currentImg);
+
 		}
 
 	});
