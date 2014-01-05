@@ -24,6 +24,7 @@ body{
   height: 70px;
   float: left;
   display: table-cell;
+  border: 1px solid black;
 }
 
 #position-label {
