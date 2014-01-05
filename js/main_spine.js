@@ -102,7 +102,7 @@
 			// Get some details about the map that we only need to get once.
 			this.map = $("#map");
 			this.mapPos = this.map.position();
-			console.log('Map Position', this.mapPos);
+			//console.log('Map Position', this.mapPos);
 			this.mapWidth = $("#map").innerWidth();
 			this.mapHeight = $("#map").innerHeight();
 
@@ -156,7 +156,7 @@
 				// Length of the timeline in years.
 				var fullLength = 640;
 				eraWidth = ((eraDuration / fullLength) * 100);
-				console.log(eraWidth);
+				//console.log(eraWidth);
 				$('.' + eraClass).css('width', eraWidth + '%');
 
 				// Add color
