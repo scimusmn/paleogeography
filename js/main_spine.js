@@ -113,8 +113,48 @@
 
 		// Render the initial state of the map.
 		render: function(){
-			$('#map').attr('src', 'img/blakey/' +
-							_.first(this.collection.models).attributes.file);
+
+			/**
+			 * Build the timeline
+			 */
+
+			// Number of eras in our collection
+			numEras = this.collection.models.length;
+
+			var baseColor = Color("#300006");
+
+			// Build the timeline from the eras in our collection
+			_.each(this.collection.models, function(model, i, list){
+
+				// Append divs for the timeline
+				eraClass = 'era-' + i;
+				var $newDiv = $("<div/>")
+					.addClass('era')
+					.addClass(eraClass)
+					.html('&nbsp;');
+				$('#timeline').append($newDiv);
+
+				// Find the length of each era. Treat the last one
+				// as an arbitrary length.
+				currentMya = model.attributes.mya;
+				if (i != (numEras - 1)) {
+					nextMya = list[i + 1].attributes.mya;
+					eraLength = nextMya - currentMya;
+				}
+				else {
+					eraLength = 50;
+				}
+
+				// Add width
+				$('.' + eraClass).css('width', eraLength + 'px');
+
+				// Add color
+				colorModifier = (1 / (i + 1)) * 10;
+				periodColor = baseColor.lighten( 0.07 );
+				baseColor = Color(periodColor.hexString());
+				$('.' + eraClass).css("background", periodColor.hexString());
+
+			});
 		},
 
 		// Cycle the map
