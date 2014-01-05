@@ -35,7 +35,8 @@ body{
 }
 
 .era-active {
-  background: #000;
+  /* Sloppy way to handle the timeline indicator */
+  background-color: #000 !important;
 }
 
 @media (min-width: 1920px) {
