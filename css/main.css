@@ -6,6 +6,14 @@ body{
   padding-top: 20px;
 }
 
+#map {
+  width:1860px;
+  height:930px;
+  display:inline-block;
+  background-image: url('/img/blakey/montage.png');
+  /*background-position:-;*/
+}
+
 #timeline {
   background: #fcb8c4;
   height: 70px;
