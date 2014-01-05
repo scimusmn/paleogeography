@@ -179,12 +179,32 @@
 			var interval = parseInt((xPcent / 100) *
 									this.collection.models.length);
 
+			if (interval !== 0) {
+				intervalMultiplier = interval * -1860;
+			}
+			else {
+				intervalMultiplier = 0;
+			}
+
 			// Set the current image based on the mouse position interval
-			currentImg = this.collection.models[interval].attributes.file;
+			currentMya = this.collection.models[interval].attributes.mya;
+			currentPeriod = this.collection.models[interval].attributes.description;
+			// We use css to change the image since it's lots faster than
+			// doing this with file replacement. Even locally.
+			$('#map').css('background-position', intervalMultiplier);
+
+			// Indicate our current frame in the timeline
+			$(".era").removeClass("era-active");
+			$('.era-' + interval).addClass('era-active');
+
+			// Display debug information
 			$('#info').html(' - Mouse: ' + mousePos +
 							', Interval: ' + interval +
-							', currentImg: ' + currentImg);
-			$('#map').attr('src', 'img/blakey/' + currentImg);
+							', Mya: ' + currentMya +
+							', Period: ' + currentPeriod +
+							', intervalMultiplier: ' + intervalMultiplier);
+
+			//$('#map').attr('src', 'img/blakey/' + currentImg);
 
 		}
 
