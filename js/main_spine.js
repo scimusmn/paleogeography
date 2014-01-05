@@ -118,10 +118,17 @@
 			 * Build the timeline
 			 */
 
-			// Number of eras in our collection
-			numEras = this.collection.models.length;
-
+			// Initialize a Color object from the color.js library.
+			// This will be the base color for the timeline.
 			var baseColor = Color("#300006");
+
+			// Number of eras in our collection
+			var numEras = this.collection.models.length;
+
+			// Full duration of the time series
+			var startMya = _.first(this.collection.models).attributes.mya;
+			var endMya = _.last(this.collection.models).attributes.mya;
+			fullDuration = Math.abs(startMya) + endMya;
 
 			// Build the timeline from the eras in our collection
 			_.each(this.collection.models, function(model, i, list){
