@@ -139,14 +139,14 @@
 				currentMya = model.attributes.mya;
 				if (i != (numEras - 1)) {
 					nextMya = list[i + 1].attributes.mya;
-					eraLength = nextMya - currentMya;
+					eraDuration = nextMya - currentMya;
 				}
 				else {
-					eraLength = 50;
+					eraDuration = 50;
 				}
 
 				// Add width
-				$('.' + eraClass).css('width', eraLength + 'px');
+				$('.' + eraClass).css('width', eraDuration + 'px');
 
 				// Add color
 				colorModifier = (1 / (i + 1)) * 10;
