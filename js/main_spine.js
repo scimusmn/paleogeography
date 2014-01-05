@@ -157,14 +157,9 @@
 			});
 		},
 
-		// Cycle the map
-		//
-		// Right now this one just changes the image to the last image.
-		// Up next it will cycle through the images.
+		// TODO - In the future, do click checking
 		cycleImage: function () {
-			//console.log('Click');
-			$('#map').attr('src', 'img/blakey/' +
-							_.last(this.collection.models).attributes.file);
+			console.log('Click');
 		},
 
 		mousemove: function(e) {
