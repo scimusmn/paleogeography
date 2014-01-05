@@ -153,7 +153,11 @@
 				}
 
 				// Add width
-				$('.' + eraClass).css('width', eraDuration + 'px');
+				// Length of the timeline in years.
+				var fullLength = 640;
+				eraWidth = ((eraDuration / fullLength) * 100);
+				console.log(eraWidth);
+				$('.' + eraClass).css('width', eraWidth + '%');
 
 				// Add color
 				colorModifier = (1 / (i + 1)) * 10;
