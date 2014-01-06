@@ -148,9 +148,9 @@
 					.html('&nbsp;');
 				$('#timeline').append($newDiv);
 
-				// Find the length of each era. Treat the last one
-				// as an arbitrary length.
-				currentMya = model.attributes.mya;
+				// Find the length of each era.
+				// Treat the last one as an arbitrary length.
+				currentMya = model.get('mya');
 				if (i != (numEras - 1)) {
 					nextMya = list[i + 1].attributes.mya;
 					eraDuration = nextMya - currentMya;
