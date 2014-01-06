@@ -19,13 +19,14 @@ body{
   background: green;
   height: 70px;
   width: 100%;
+  /*width: 940px;*/
 }
 
 .era {
   height: 70px;
   float: left;
-  display: table-cell;
-  border: 1px solid black;
+  /*display: table-cell;*/
+  /*border: 1px solid black;*/
 }
 
 #position-label {
