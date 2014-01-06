@@ -127,7 +127,15 @@
 			// Full duration of the time series
 			var startMya = _.first(this.collection.models).attributes.mya;
 			var endMya = _.last(this.collection.models).attributes.mya;
-			fullDuration = Math.abs(startMya) + endMya;
+			// The final period *starts* in the year that it identifies.
+			// Since we want to display it as having a duration itself We
+			// apply a arbitrary duration. This is just a visual display since
+			// technically this period last back all the way into the Cambrian
+			var finalPeriodDuration = 30;
+			var fullDuration = Math.abs(startMya) + endMya +
+				finalPeriodDuration;
+			var fullWidth = 1860;
+			//console.log('Full duration', fullDuration);
 
 			// Build the timeline from the eras in our collection
 			_.each(this.collection.models, function(model, i, list){
