@@ -225,11 +225,17 @@
 			mousePos = xPos.toFixed(2) + 'px, ' + yPos.toFixed(2) + 'px';
 			//console.log('Mouse pos', mousePos);
 
-			// Turn mouse position into a interval of the count of the
-			// paleoImages array length.
-			var interval = parseInt((xPcent / 100) *
-									this.collection.models.length);
+			// Get the model for the era that we are hovering over.
+			currentEra = this.collection.filter(function(model) {
+				if (xPos <= model.get('rightBoundary')){
+					return true;
+				}
+			});
+			currentEra = _.first(currentEra);
 
+			// Move the background image "interval" numbers of times
+			// TODO var the pixel width
+			var interval = currentEra.get('interval');
 			if (interval !== 0) {
 				intervalMultiplier = interval * -1860;
 			}
@@ -238,8 +244,9 @@
 			}
 
 			// Set the current image based on the mouse position interval
-			currentMya = this.collection.models[interval].attributes.mya;
-			currentPeriod = this.collection.models[interval].attributes.description;
+			currentMya = currentEra.get('mya');
+			currentPeriod = currentEra.get('description');
+
 			// We use css to change the image since it's lots faster than
 			// doing this with file replacement. Even locally.
 			$('#map').css('background-position', intervalMultiplier);
@@ -254,9 +261,6 @@
 							', Mya: ' + currentMya +
 							', Period: ' + currentPeriod +
 							', intervalMultiplier: ' + intervalMultiplier);
-
-			//$('#map').attr('src', 'img/blakey/' + currentImg);
-
 		}
 
 	});
