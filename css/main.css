@@ -6,16 +6,27 @@ body{
   padding-top: 20px;
 }
 
+#map {
+  width:1860px;
+  height:930px;
+  display:inline-block;
+  background-image: url('/img/blakey/montage.png');
+  /*background-position:-;*/
+}
+
 #timeline {
-  background: #fcb8c4;
+  /*background: #fcb8c4;*/
+  background: green;
   height: 70px;
   width: 100%;
+  /*width: 940px;*/
 }
 
 .era {
   height: 70px;
   float: left;
-  display: table-cell;
+  /*display: table-cell;*/
+  /*border: 1px solid black;*/
 }
 
 #position-label {
@@ -26,7 +37,8 @@ body{
 }
 
 .era-active {
-  background: #000;
+  /* Sloppy way to handle the timeline indicator */
+  background-color: #000 !important;
 }
 
 @media (min-width: 1920px) {
