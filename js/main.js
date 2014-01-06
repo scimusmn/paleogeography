@@ -191,8 +191,7 @@
                 $('.' + eraClass).css('width', eraWidth + 'px');
 
                 // Add color
-                colorModifier = (1 / (i + 1)) * 10;
-                periodColor = baseColor.lighten( 0.07 );
+                var periodColor = baseColor.lighten(0.07);
                 baseColor = Color(periodColor.hexString());
                 $('.' + eraClass).css("background", periodColor.hexString());
 
