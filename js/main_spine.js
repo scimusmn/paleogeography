@@ -197,6 +197,14 @@
 				$('.' + eraClass).css("background", periodColor.hexString());
 
 			});
+
+			// Debug check
+			//_.each(this.collection.models, function(model, i, list){
+				//console.log('Mya: ' + model.get('mya') +
+							////'Desc.: ' + model.get('description') +
+							//', Right bound: ' + model.get('rightBoundary'));
+			//});
+
 		},
 
 		// TODO - In the future, do click checking
@@ -205,6 +213,7 @@
 		},
 
 		mousemove: function(e) {
+
 			// Get mouse position
 			xPos = event.pageX - this.mapPos.left;
 			yPos = event.pageX - this.mapPos.top;
