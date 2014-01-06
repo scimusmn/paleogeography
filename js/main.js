@@ -28,7 +28,7 @@
         { mya: 50, description: 'Eocene' },
         { mya: 65, description: 'KT Boundary' },
         { mya: 75, description: 'Later Cretaceous' },
-        { mya: 090, description: 'Late Cretaceous' },
+        { mya: 90, description: 'Late Cretaceous' },
         { mya: 105, description: 'Early Cretaceous' },
         { mya: 120, description: 'Earlier Cretaceous' },
         { mya: 150, description: 'Late Jurassic' },
