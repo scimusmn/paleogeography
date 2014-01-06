@@ -60,8 +60,10 @@
 	 */
 	var Era = Backbone.Model.extend({
 		defaults: {
-			file: '',
-			description: ''
+			mya: '',
+			description: '',
+			eraDuration: '',
+			rightBoundary: ''
 		},
 		//initialize: function(){
             //console.log('Is there any ulitity to defining this here?');
