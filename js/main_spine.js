@@ -161,6 +161,30 @@
 					model.attributes.eraDuration = 10;
 				}
 
+				// Calculate the right boundaries based on the durations
+				eraWidth = Math.round((
+					model.attributes.eraDuration / fullDuration) * fullWidth);
+				//console.log('ID = ' + model.cid +
+							//', description = ' + model.get('description') +
+							//', width = ' + eraWidth);
+
+				if (i === 0) {
+					model.attributes.rightBoundary = eraWidth;
+				}
+				else if (i!= (numEras - 1)) {
+					model.attributes.rightBoundary =
+						list[i - 1].attributes.rightBoundary + eraWidth;
+				}
+				// JS and CSS math is terrible
+				// We just have to tell it that the end is here
+				else {
+					model.attributes.rightBoundary = 1860;
+				}
+
+				// Store the interval in the model so that we can reference
+				// different eras in events
+				model.attributes.interval = i;
+
 				// Add width
 				// Length of the timeline in years.
 				var fullLength = 640;
