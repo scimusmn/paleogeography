@@ -222,7 +222,7 @@
 			// Turn it into a percentage of the map width
 			xPcent = ((xPos / this.mapWidth) * 100);
 			yPcent = ((yPos / this.mapHeight) * 100);
-			mousePos = xPcent.toFixed(2) + '%, ' + yPcent.toFixed(2) + '%';
+			mousePos = xPos.toFixed(2) + 'px, ' + yPos.toFixed(2) + 'px';
 			//console.log('Mouse pos', mousePos);
 
 			// Turn mouse position into a interval of the count of the
