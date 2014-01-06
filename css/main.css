@@ -15,7 +15,8 @@ body{
 }
 
 #timeline {
-  background: #fcb8c4;
+  /*background: #fcb8c4;*/
+  background: green;
   height: 70px;
   width: 100%;
 }
