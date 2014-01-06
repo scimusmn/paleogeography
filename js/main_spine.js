@@ -152,11 +152,13 @@
 				// Treat the last one as an arbitrary length.
 				currentMya = model.get('mya');
 				if (i != (numEras - 1)) {
-					nextMya = list[i + 1].attributes.mya;
-					eraDuration = nextMya - currentMya;
+					nextMya = list[i + 1].get('mya');
+					// Add the duration value to the model
+					model.attributes.eraDuration = nextMya - currentMya;
 				}
 				else {
-					eraDuration = 50;
+					// TODO Put this in as a constant up top
+					model.attributes.eraDuration = 10;
 				}
 
 				// Add width
