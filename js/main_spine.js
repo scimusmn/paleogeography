@@ -186,11 +186,9 @@
 				model.attributes.interval = i;
 
 				// Add width
-				// Length of the timeline in years.
-				var fullLength = 640;
-				eraWidth = ((eraDuration / fullLength) * 100);
+
 				//console.log(eraWidth);
-				$('.' + eraClass).css('width', eraWidth + '%');
+				$('.' + eraClass).css('width', eraWidth + 'px');
 
 				// Add color
 				colorModifier = (1 / (i + 1)) * 10;
