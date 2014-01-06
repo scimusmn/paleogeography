@@ -65,9 +65,6 @@
 			eraDuration: '',
 			rightBoundary: ''
 		},
-		//initialize: function(){
-            //console.log('Is there any ulitity to defining this here?');
-        //}
 	});
 
 	/**
