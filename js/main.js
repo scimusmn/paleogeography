@@ -170,9 +170,9 @@
                 } else {
                     // Last era
                     model.attributes.rightBoundary = fullWidth;
-                    // Add an extra pixel to handle CSS' impercision with
+                    // Remove an extra pixel to handle CSS' impercision with
                     // the decimal points.
-                    eraWidth = eraWidth + 1;
+                    eraWidth = eraWidth - 1;
                     $('.' + eraClass).addClass('era-last');
                 }
 
@@ -194,6 +194,7 @@
                 // Add color
                 $('.' + eraClass).css("background", model.get('c'));
 
+
             });
 
             // Debug check
@@ -202,6 +203,11 @@
                             ////'Desc.: ' + model.get('description') +
                             //', Right bound: ' + model.get('rightBoundary'));
             //});
+            $('.timeline-pointer').css(
+                'left', ($('#timeline-indicator').width() / 2) - 15);
+            $('#timeline-label').html('Present day');
+            $('#timeline-indicator').css('left', '1322px');
+            $('#map').css('background-position', 30 * -1860);
 
         },
 
@@ -251,11 +257,29 @@
             $('.era-' + interval).addClass('era-active');
 
             // Display debug information
-            $('#info').html(' - Mouse: ' + mousePos +
-                            ', Interval: ' + interval +
-                            ', Mya: ' + currentMya +
-                            ', Period: ' + currentPeriod +
-                            ', intervalMultiplier: ' + intervalMultiplier);
+            //$('#info').html(' - Mouse: ' + mousePos +
+                            //', Interval: ' + interval +
+                            //', Mya: ' + currentMya +
+                            //', Period: ' + currentPeriod +
+                            //', intervalMultiplier: ' + intervalMultiplier);
+
+            // Timeline label
+            console.log();
+            $('.timeline-pointer').css(
+                'left', ($('#timeline-indicator').width() / 2) - 15);
+            var timelineLabel = '';
+            if (currentMya > 0) {
+                timelineLabel = currentPeriod + '<br />' +
+                    currentMya + ' million years ago';
+            } else if (currentMya  == 0) {
+                timelineLabel = currentPeriod
+            } else {
+                timelineLabel = -currentMya +
+                    ' million years <br />in the future';
+            }
+            $('#timeline-label').html(timelineLabel);
+            $('#timeline-indicator').css(
+                'left', event.pageX - ($('#timeline-indicator').width() / 2));
         }
 
     });

@@ -3,7 +3,8 @@
    ========================================================================== */
 
 body{
-  padding-top: 20px;
+  background: #444;
+  padding-top: 60px;
 }
 
 #map {
@@ -34,11 +35,46 @@ body{
   border-right: none;
 }
 
-#position-label {
+#sidebar {
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFF;
+  padding: 10px 50px 10px 200px;
   position: fixed;
-  top: 925px;
+  top: 550px;
+  width: 500px;
+}
+#sidebar p {
+  font-size: 1.2em;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+#timeline-indicator {
+  top: 34px;
+  position: fixed;
+}
+#timeline-label {
+  font-size: 1.2em;
+  text-align: center;
+}
+.timeline-pointer {
+  color: white;
+  margin-top: -5px;
+  font-size: 1.5em;
+}
+
+#timeline-label {
+  /*background: #fff;*/
+  /*background-image: url('../img/label_bottom.png');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center bottom 25px;*/
   background: #FFF;
-  padding: 10px;
+  border: 1px solid #000;
+  margin: 0;
+  padding: 5px;
+}
+#timeline-pointer {
+  background: #fff;
 }
 
 .era-active {
