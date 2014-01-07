@@ -10,7 +10,7 @@ body{
   width:1860px;
   height:930px;
   display:inline-block;
-  background-image: url('/img/blakey/montage.png');
+  background-image: url('../img/blakey/montage.png');
 }
 
 #timeline {
