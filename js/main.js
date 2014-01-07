@@ -103,12 +103,9 @@
             // Get some details about the map that we only need to get once.
             this.map = $("#map");
             this.mapPos = this.map.position();
-            //console.log('Map Position', this.mapPos);
-            this.mapWidth = this.map.innerWidth();
-            this.mapHeight = this.map.innerHeight();
 
-            // Run the render function. I think this is part of the pattern
-            // convention.
+            // Run the render function.
+            // I think this is part of the pattern convention.
             this.render();
         },
 
