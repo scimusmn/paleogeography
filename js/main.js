@@ -206,7 +206,7 @@
             $('.timeline-pointer').css(
                 'left', ($('#timeline-indicator').width() / 2) - 15);
             $('#timeline-label').html('Present day');
-            $('#timeline-indicator').css('left', '1322px');
+            $('#timeline-indicator').css('left', '1225px');
             $('#map').css('background-position', 30 * -1860);
 
         },
