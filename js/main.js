@@ -155,7 +155,7 @@
                 }
 
                 // Calculate the right boundaries based on the durations
-                var eraWidth = Math.round(
+                var eraWidth = (
                     (model.attributes.eraDuration / fullDuration) * fullWidth
                 );
                 console.log('ID = ' + model.cid +
