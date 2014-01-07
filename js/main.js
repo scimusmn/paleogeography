@@ -6,7 +6,10 @@
     // to touch and drag the main map image around. This prevents dragging.
     //
     // TODO - Build this into Backbone
-    document.getElementById('map').ondragstart = function() { return false; };
+    document.getElementById('map').ondragstart = function () {
+        return false;
+        console.log('test');
+    };
 
     /**
      * Static Paleogeography images
@@ -50,7 +53,7 @@
         { mya: 500, description: 'Late Cambrian' },
         { mya: 540, description: 'Early Cambrian' },
         { mya: 560, description: 'Late Protoerozoic' },
-        { mya: 600, description: 'Later Protoerozoic' },
+        { mya: 600, description: 'Later Protoerozoic' }
     ];
 
     /**
@@ -64,7 +67,7 @@
             description: '',
             eraDuration: '',
             rightBoundary: ''
-        },
+        }
     });
 
     /**
@@ -88,10 +91,10 @@
         // Eventually we'll add a click and drag event.
         events: {
             'click #map': 'cycleImage',
-            'mousemove': 'mousemove',
+            'mousemove': 'mousemove'
         },
 
-        initialize: function() {
+        initialize: function () {
 
             _.bindAll(this, 'render', 'cycleImage');
 
@@ -111,7 +114,7 @@
         },
 
         // Render the initial state of the map.
-        render: function(){
+        render: function () {
 
             /**
              * Build the timeline
@@ -125,8 +128,8 @@
             var numEras = this.collection.models.length;
 
             // Full duration of the time series
-            var startMya = _.first(this.collection.models).get( 'mya' );
-            var endMya = _.last(this.collection.models).get( 'mya' );
+            var startMya = _.first(this.collection.models).get('mya');
+            var endMya = _.last(this.collection.models).get('mya');
             // The final period *starts* in the year that it identifies.
             // Since we want to display it as having a duration itself We
             // apply a arbitrary duration. This is just a visual display since
@@ -138,10 +141,10 @@
             //console.log('Full duration', fullDuration);
 
             // Build the timeline from the eras in our collection
-            _.each(this.collection.models, function(model, i, list){
+            _.each(this.collection.models, function (model, i, list) {
 
                 // Append divs for the timeline
-                eraClass = 'era-' + i;
+                var eraClass = 'era-' + i;
                 var $newDiv = $("<div/>")
                     .addClass('era')
                     .addClass(eraClass)
@@ -150,34 +153,32 @@
 
                 // Find the length of each era.
                 // Treat the last one as an arbitrary length.
-                currentMya = model.get('mya');
-                if (i != (numEras - 1)) {
+                var nextMya = '';
+                if (i !== (numEras - 1)) {
                     nextMya = list[i + 1].get('mya');
                     // Add the duration value to the model
-                    model.attributes.eraDuration = nextMya - currentMya;
-                }
-                else {
+                    model.attributes.eraDuration = nextMya - model.get('mya');
+                } else {
                     // TODO Put this in as a constant up top
                     model.attributes.eraDuration = 10;
                 }
 
                 // Calculate the right boundaries based on the durations
-                eraWidth = Math.round((
-                    model.attributes.eraDuration / fullDuration) * fullWidth);
+                var eraWidth = Math.round(
+                    (model.attributes.eraDuration / fullDuration) * fullWidth
+                );
                 //console.log('ID = ' + model.cid +
                             //', description = ' + model.get('description') +
                             //', width = ' + eraWidth);
 
                 if (i === 0) {
                     model.attributes.rightBoundary = eraWidth;
-                }
-                else if (i!= (numEras - 1)) {
+                } else if (i !== (numEras - 1)) {
                     model.attributes.rightBoundary =
                         list[i - 1].attributes.rightBoundary + eraWidth;
-                }
-                // JS and CSS math is terrible
-                // We just have to tell it that the end is here
-                else {
+                } else {
+                    // JS and CSS math is terrible
+                    // We just have to tell it that the end is here
                     model.attributes.rightBoundary = 1860;
                 }
 
@@ -198,7 +199,7 @@
             });
 
             // Debug check
-            //_.each(this.collection.models, function(model, i, list){
+            //_.each(this.collection.models, function (model, i, list){
                 //console.log('Mya: ' + model.get('mya') +
                             ////'Desc.: ' + model.get('description') +
                             //', Right bound: ' + model.get('rightBoundary'));
@@ -208,41 +209,40 @@
 
         // TODO - In the future, do click checking
         cycleImage: function () {
-            console.log('Click');
+            //console.log('Click');
         },
 
-        mousemove: function(e) {
+        mousemove: function (e) {
 
             // Get mouse position
-            xPos = event.pageX - this.mapPos.left;
-            yPos = event.pageX - this.mapPos.top;
+            var xPos = event.pageX - this.mapPos.left;
+            var yPos = event.pageX - this.mapPos.top;
             //console.log("Mouse coordinates", xPos + ", " + yPos);
 
             // For debugging
-            mousePos = xPos.toFixed(2) + 'px, ' + yPos.toFixed(2) + 'px';
+            var mousePos = xPos.toFixed(2) + 'px, ' + yPos.toFixed(2) + 'px';
             //console.log('Mouse pos', mousePos);
 
             // Get the model for the era that we are hovering over.
-            currentEra = this.collection.filter(function(model) {
-                if (xPos <= model.get('rightBoundary')){
-                    return true;
-                }
-            });
-            currentEra = _.first(currentEra);
+            var currentEra = _.first(
+                this.collection.filter(function (model) {
+                    if (xPos <= model.get('rightBoundary')) {
+                        return true;
+                    }
+                })
+            );
 
             // Move the background image "interval" numbers of times
             // TODO var the pixel width
             var interval = currentEra.get('interval');
+            var intervalMultiplier = 0;
             if (interval !== 0) {
                 intervalMultiplier = interval * -1860;
             }
-            else {
-                intervalMultiplier = 0;
-            }
 
             // Set the current image based on the mouse position interval
-            currentMya = currentEra.get('mya');
-            currentPeriod = currentEra.get('description');
+            var currentMya = currentEra.get('mya');
+            var currentPeriod = currentEra.get('description');
 
             // We use css to change the image since it's lots faster than
             // doing this with file replacement. Even locally.
