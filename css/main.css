@@ -11,12 +11,10 @@ body{
   height:930px;
   display:inline-block;
   background-image: url('/img/blakey/montage.png');
-  /*background-position:-;*/
 }
 
 #timeline {
-  /*background: #fcb8c4;*/
-  background: green;
+  background: grey;
   height: 70px;
   width: 100%;
   /*width: 940px;*/
