@@ -16,43 +16,43 @@
      * Maybe these should be broken out in another file?
      */
     var eras = [
-        { mya: -250, description: '250 million years in the future' },
-        { mya: -200, description: '200 million years in the future' },
-        { mya: -150, description: '150 million years in the future' },
-        { mya: -100, description: '100 million years in the future' },
-        { mya: -50, description: '50 million years in the future' },
-        { mya: -3, description: '3 million years in the future' },
-        { mya: 0, description: 'Present day' },
-        { mya: 5, description: 'Pleistocene', c: '#FFF2C7'},
-        { mya: 12, description: 'Holocene', c: '#FEF2E0'},
-        { mya: 20, description: 'Miocene', c: '#FFFF00'},
-        { mya: 35, description: 'Late Eocene', c: '#fdcda1'},
-        { mya: 50, description: 'Eocene', c: '#fca773'},
-        { mya: 65, description: 'KT Boundary - Maastrichtian', c: '#f2fa8c'},
-        { mya: 75, description: 'Late Cretaceous - Campanian', c: '#e6f47f'},
-        { mya: 90, description: 'Late Cretaceous - Turonian', c: '#bfe35d'},
-        { mya: 105, description: 'Early Cretaceous - Albian', c: '#8ccd57'},
-        { mya: 120, description: 'Early Cretaceous - Aptian', c: '#BFE19F'},
-        { mya: 150, description: 'Late Jurassic', c: '#97E3FA'},
-        { mya: 170, description: 'Middle Jurassic', c: '#34D1EB'},
-        { mya: 200, description: 'Early Jurrasic', c: '#00B7EA'},
-        { mya: 220, description: 'Late Triasic', c: '#C698C2'},
-        { mya: 240, description: 'Middle Triasic', c: '#BF7CB1'},
-        { mya: 260, description: 'Late Permian', c: '#FEAF97'},
-        { mya: 280, description: 'Early Permian', c: '#F76E54'},
-        { mya: 300, description: 'Late Pennsylvanian', c: '#8AC6C3'},
-        { mya: 340, description: 'Middle Mississippian', c: '#619D7E'},
-        { mya: 370, description: 'Late Devonian', c: '#F4E0A9'},
-        { mya: 400, description: 'Early Devonian', c: '#EFB063'},
-        { mya: 420, description: 'Late Silurian', c: '#E4F2E6'},
-        { mya: 430, description: 'Middle Silurian', c: '#B4E5DB'},
-        { mya: 440, description: 'Early Silurian', c: '#7ED7C6'},
-        { mya: 450, description: 'Late Ordovician', c: '#5ECCA9'},
-        { mya: 470, description: 'Middle Ordovician', c: '#00BD97'},
-        { mya: 500, description: 'Late Cambrian', c: '#A1CF9B'},
-        { mya: 540, description: 'Early Cambrian', c: '#8AB584'},
+        { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'},
         { mya: 560, description: 'Late Protoerozoic', c: '#FED67B'},
-        { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'}
+        { mya: 540, description: 'Early Cambrian', c: '#8AB584'},
+        { mya: 500, description: 'Late Cambrian', c: '#A1CF9B'},
+        { mya: 470, description: 'Middle Ordovician', c: '#00BD97'},
+        { mya: 450, description: 'Late Ordovician', c: '#5ECCA9'},
+        { mya: 440, description: 'Early Silurian', c: '#7ED7C6'},
+        { mya: 430, description: 'Middle Silurian', c: '#B4E5DB'},
+        { mya: 420, description: 'Late Silurian', c: '#E4F2E6'},
+        { mya: 400, description: 'Early Devonian', c: '#EFB063'},
+        { mya: 370, description: 'Late Devonian', c: '#F4E0A9'},
+        { mya: 340, description: 'Middle Mississippian', c: '#619D7E'},
+        { mya: 300, description: 'Late Pennsylvanian', c: '#8AC6C3'},
+        { mya: 280, description: 'Early Permian', c: '#F76E54'},
+        { mya: 260, description: 'Late Permian', c: '#FEAF97'},
+        { mya: 240, description: 'Middle Triasic', c: '#BF7CB1'},
+        { mya: 220, description: 'Late Triasic', c: '#C698C2'},
+        { mya: 200, description: 'Early Jurrasic', c: '#00B7EA'},
+        { mya: 170, description: 'Middle Jurassic', c: '#34D1EB'},
+        { mya: 150, description: 'Late Jurassic', c: '#97E3FA'},
+        { mya: 120, description: 'Early Cretaceous - Aptian', c: '#BFE19F'},
+        { mya: 105, description: 'Early Cretaceous - Albian', c: '#8ccd57'},
+        { mya: 90, description: 'Late Cretaceous - Turonian', c: '#bfe35d'},
+        { mya: 75, description: 'Late Cretaceous - Campanian', c: '#e6f47f'},
+        { mya: 65, description: 'KT Boundary - Maastrichtian', c: '#f2fa8c'},
+        { mya: 50, description: 'Eocene', c: '#fca773'},
+        { mya: 35, description: 'Late Eocene', c: '#fdcda1'},
+        { mya: 20, description: 'Miocene', c: '#FFFF00'},
+        { mya: 12, description: 'Holocene', c: '#FEF2E0'},
+        { mya: 5, description: 'Pleistocene', c: '#FFF2C7'},
+        { mya: 0, description: 'Present day', c: '#fef2e0'},
+        { mya: -3, description: '3 million years in the future', c: '#ccc' },
+        { mya: -50, description: '50 million years in the future', c: '#bbb'},
+        { mya: -100, description: '100 million years in the future', c: '#b2b2b2'},
+        { mya: -150, description: '150 million years in the future', c: '#aaa' },
+        { mya: -200, description: '200 million years in the future', c: '#a1a1a1' },
+        { mya: -250, description: '250 million years in the future', c: '#999' }
     ];
 
     /**
@@ -120,16 +120,15 @@
 
             // Full duration of the time series
             var startMya = _.first(this.collection.models).get('mya');
+            console.log(startMya);
             var endMya = _.last(this.collection.models).get('mya');
-            // The final period *starts* in the year that it identifies.
-            // Since we want to display it as having a duration itself We
-            // apply a arbitrary duration. This is just a visual display since
-            // technically this period last back all the way into the Cambrian
-            var finalPeriodDuration = 30;
-            var fullDuration = Math.abs(startMya) + endMya +
-                finalPeriodDuration;
+            console.log(endMya);
+            // Make the future last for 50 extra years.
+            var finalPeriodDuration = 50;
+            var fullDuration = finalPeriodDuration + Math.abs(startMya) +
+                Math.abs(endMya);
             var fullWidth = 1860;
-            //console.log('Full duration', fullDuration);
+            console.log('Full duration', fullDuration);
 
             // Loop through the collection and build the timeline from the eras
             _.each(this.collection.models, function (model, i, list) {
@@ -148,7 +147,7 @@
                 if (i !== (numEras - 1)) {
                     nextMya = list[i + 1].get('mya');
                     // Add the duration value to the model
-                    model.attributes.eraDuration = nextMya - model.get('mya');
+                    model.attributes.eraDuration = model.get('mya') - nextMya;
                 } else {
                     // TODO Put this in as a constant up top
                     model.attributes.eraDuration = 10;
@@ -158,9 +157,9 @@
                 var eraWidth = Math.round(
                     (model.attributes.eraDuration / fullDuration) * fullWidth
                 );
-                //console.log('ID = ' + model.cid +
-                            //', description = ' + model.get('description') +
-                            //', width = ' + eraWidth);
+                console.log('ID = ' + model.cid +
+                            ', description = ' + model.get('description') +
+                            ', width = ' + eraWidth);
 
                 if (i === 0) {
                     model.attributes.rightBoundary = eraWidth;
