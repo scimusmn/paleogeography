@@ -162,6 +162,7 @@
                 if (i === 0) {
                     // First
                     model.attributes.rightBoundary = eraWidth;
+                    $('.' + eraClass).addClass('era-first');
                 } else if (i !== (numEras - 1)) {
                     // All but last
                     model.attributes.rightBoundary =
@@ -169,6 +170,10 @@
                 } else {
                     // Last era
                     model.attributes.rightBoundary = fullWidth;
+                    // Add an extra pixel to handle CSS' impercision with
+                    // the decimal points.
+                    eraWidth = eraWidth + 1;
+                    $('.' + eraClass).addClass('era-last');
                 }
 
                 //console.log('ID = ' + model.cid +
