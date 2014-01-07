@@ -1,155 +1,256 @@
-$( document ).ready(function() {
-    console.log("Ready");
+(function ($) {
+
     // Prevent image dragging
     //
     // Since this is a touch screen experience, we don't want users to be able
     // to touch and drag the main map image around. This prevents dragging.
-    document.getElementById('map').ondragstart = function() { return false; };
-
-	// Base color
-	// Start the left side of the timeline with a deep maroon.
-	// This is just a placeholder color.
-	var baseColor = Color("#300006");
-
-    // Define image array
     //
-    // List of image files and their descriptions
-    var paleoImages = [
-        { file: "000.png", description: "Present day" },
-        { file: "005.png", description: "Pleistocene" },
-        { file: "012.png", description: "Holocene" },
-        { file: "020.png", description: "Miocene" },
-        { file: "035.png", description: "Late Eocene" },
-        { file: "050.png", description: "Eocene" },
-        { file: "065.png", description: "KT Boundary" },
-        { file: "075.png", description: "Later Cretaceous" },
-        { file: "090.png", description: "Late Cretaceous" },
-        { file: "105.png", description: "Early Cretaceous" },
-        { file: "120.png", description: "Earlier Cretaceous" },
-        { file: "150.png", description: "Late Jurassic" },
-        { file: "170.png", description: "Middle Triasic" },
-        { file: "200.png", description: "Late Triasic" },
-        { file: "220.png", description: "Late Triasic" },
-        { file: "240.png", description: "Middle Triasic" },
-        { file: "260.png", description: "Late Permian" },
-        { file: "280.png", description: "Early Permian" },
-        { file: "300.png", description: "Late Pennsylvanian" },
-        { file: "340.png", description: "Middle Mississippian" },
-        { file: "370.png", description: "Late Devonian" },
-        { file: "400.png", description: "Early Devonian" },
-        { file: "420.png", description: "Late Silurian" },
-        { file: "430.png", description: "Middle Silurian" },
-        { file: "440.png", description: "Early Silurian" },
-        { file: "450.png", description: "Late Ordovician" },
-        { file: "470.png", description: "Middle Ordovician" },
-        { file: "500.png", description: "Late Cambrian" },
-        { file: "540.png", description: "Early Cambrian" },
-        { file: "560.png", description: "Late Protoerozoic" },
-        { file: "600.png", description: "Later Protoerozoic" },
+    // TODO - Build this into Backbone
+    document.getElementById('map').ondragstart = function () {
+        return false;
+    };
+
+    /**
+     * Static Paleogeography images
+     *
+     * Maybe these should be broken out in another file?
+     */
+    var eras = [
+        { mya: -250, description: '250 million years in the future' },
+        { mya: -200, description: '200 million years in the future' },
+        { mya: -150, description: '150 million years in the future' },
+        { mya: -100, description: '100 million years in the future' },
+        { mya: -50, description: '50 million years in the future' },
+        { mya: -3, description: '3 million years in the future' },
+        { mya: 0, description: 'Present day' },
+        { mya: 5, description: 'Pleistocene', c: '#FFF2C7'},
+        { mya: 12, description: 'Holocene', c: '#FEF2E0'},
+        { mya: 20, description: 'Miocene', c: '#FFFF00'},
+        { mya: 35, description: 'Late Eocene', c: '#fdcda1'},
+        { mya: 50, description: 'Eocene', c: '#fca773'},
+        { mya: 65, description: 'KT Boundary - Maastrichtian', c: '#f2fa8c'},
+        { mya: 75, description: 'Late Cretaceous - Campanian', c: '#e6f47f'},
+        { mya: 90, description: 'Late Cretaceous - Turonian', c: '#bfe35d'},
+        { mya: 105, description: 'Early Cretaceous - Albian', c: '#8ccd57'},
+        { mya: 120, description: 'Early Cretaceous - Aptian', c: '#BFE19F'},
+        { mya: 150, description: 'Late Jurassic', c: '#97E3FA'},
+        { mya: 170, description: 'Middle Jurassic', c: '#34D1EB'},
+        { mya: 200, description: 'Early Jurrasic', c: '#00B7EA'},
+        { mya: 220, description: 'Late Triasic', c: '#C698C2'},
+        { mya: 240, description: 'Middle Triasic', c: '#BF7CB1'},
+        { mya: 260, description: 'Late Permian', c: '#FEAF97'},
+        { mya: 280, description: 'Early Permian', c: '#F76E54'},
+        { mya: 300, description: 'Late Pennsylvanian', c: '#8AC6C3'},
+        { mya: 340, description: 'Middle Mississippian', c: '#619D7E'},
+        { mya: 370, description: 'Late Devonian', c: '#F4E0A9'},
+        { mya: 400, description: 'Early Devonian', c: '#EFB063'},
+        { mya: 420, description: 'Late Silurian', c: '#E4F2E6'},
+        { mya: 430, description: 'Middle Silurian', c: '#B4E5DB'},
+        { mya: 440, description: 'Early Silurian', c: '#7ED7C6'},
+        { mya: 450, description: 'Late Ordovician', c: '#5ECCA9'},
+        { mya: 470, description: 'Middle Ordovician', c: '#00BD97'},
+        { mya: 500, description: 'Late Cambrian', c: '#A1CF9B'},
+        { mya: 540, description: 'Early Cambrian', c: '#8AB584'},
+        { mya: 560, description: 'Late Protoerozoic', c: '#FED67B'},
+        { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'}
     ];
 
-	var totalWidth = 0;
-
-    for (var key in paleoImages) {
-
-		colorModifier = (1 / (key + 1)) * 10;
-		//console.log(colorModifier);
-		periodColor = baseColor.lighten( 0.07 );
-		baseColor = Color(periodColor.hexString());
-		//console.log(periodColor.hexString());
-
-		var periods = paleoImages.length - 1;
-		if (parseInt(key) != periods) {
-			currentFile = parseInt(paleoImages[key].file.substring(0,3));
-			nextFile = parseInt(paleoImages[parseInt(key) + 1].file.substring(0,3));
-			myr = nextFile - currentFile;
-			//console.log("In key:" + key + "; myr: " + myr);
-
-			var eraClass = paleoImages[key].description.toLowerCase();
-			eraClass = eraClass.replace(" ", "-");
-			paleoImages[key].eraClass = eraClass;
-			//console.log("Time: " + currentFile +
-					//"; Millions of Years long: " + myr + "; " +
-					//"; Era Class: " + eraClass);
-			// Length of the timeline in years.
-			var fullLength = 640;
-
-			// Pixel width of the current era.
-
-			eraWidth = ((myr / fullLength) * 100).toPrecision(2);
-
-			// Set the era width
-			$('.' + eraClass).attr("style", "width: " + eraWidth + "%;");
-			//console.log(eraWidth);
-
-			//Set the era background color
-			$('.' + eraClass).css("background", periodColor.hexString());
-
-
-			paleoImages[key].myr = '30';
-			var obj = paleoImages[key];
-			totalWidth = totalWidth + parseFloat(eraWidth);
-		}
-    }
-
-	totalWidth = totalWidth.toPrecision(2);
-	//console.log("Total width: " + totalWidth);
-
-	// Removing a small fudge factor to get the % floating to work.
-	// This is purely the result of trial and error and is a hack right now.
-	// TODO fix this hack
-	lastWidth = 100 - totalWidth - 0.5;
-
-	$('.era-last').attr("style", "display: inline-block;");
-	$('.era-last').attr("style", "width: " + lastWidth + "%;");
-
-	var currentInterval = 0;
-    $("#map").mousemove(function( event ) {
-        if(event.which==1) {
-			var map = $("#map");
-
-			// Get details about the map image
-			var mapPos = map.position();
-			var mapWidth = map.width();
-			var mapHeight = map.height();
-
-			var xPos = event.pageX - mapPos.left;
-			var xPcent = ((xPos / mapWidth) * 100);
-			var yPos = event.pageY - mapPos.top;
-			var yPcent = ((yPos / mapWidth) * 100);
-			var interval = parseInt((xPcent / 100) * paleoImages.length);
-
-			$("#position-label").attr("style", "left: " + xPos + "px;");
-			$("#position-label").html(paleoImages[interval].description);
-
-			//var pageCoords = "( " + xPos + ", " + yPos + " )";
-			var pageCoords = "( " + xPcent.toPrecision(3) + "%, " +
-				yPcent.toPrecision(3) + "% )";
-
-			$( "span:first" ).text( "( x,y ) : " + pageCoords );
-
-			var timeImage = '';
-
-			if (interval != currentInterval) {
-				timeImage = paleoImages[interval].file;
-
-				//previousClass = paleoImages[currentInterval].file;
-				//console.log("Previous clas" + previousClass);
-				eraClass = paleoImages[interval].eraClass;
-
-				$(".era").removeClass("era-active");
-				$("." + eraClass).addClass("era-active");
-
-				// It's probably faster to move the image rather than changing the src
-				// But I wonder how large of an image can we load into memory
-				$("#map").attr("src", "img/blakey/" + timeImage);
-				currentInterval = interval;
-			} else {
-			}
+    /**
+     * Models
+     *
+     * A single element in the data is an Era.
+     */
+    var Era = Backbone.Model.extend({
+        defaults: {
+            mya: '',
+            description: '',
+            eraDuration: '',
+            rightBoundary: ''
         }
     });
-});
 
+    /**
+     * Collections
+     *
+     * A grouping of all the Eras represents History
+     */
+    var History = Backbone.Collection.extend({
+        model: Era
+    });
 
+    /**
+     * Views
+     *
+     * Our primary view is just for looking at the map initially.
+     */
+    var MapView = Backbone.View.extend({
+        el: $('body'),
 
+        // Run the cycleImage function when the main image is clicked.
+        // Eventually we'll add a click and drag event.
+        events: {
+            'click #map': 'cycleImage',
+            'mousemove': 'mousemove'
+        },
 
+        initialize: function () {
+
+            _.bindAll(this, 'render', 'cycleImage');
+
+            // Add the collection to the this object.
+            this.collection = new History(eras);
+
+            // Get the map position on the page.
+            this.mapPos = $("#map").position();
+
+            // Run the render function.
+            // I think this is part of the pattern convention.
+            this.render();
+        },
+
+        // Render the initial state of the map.
+        render: function () {
+
+            /**
+             * Build the timeline
+             */
+
+            // Number of eras in our collection
+            var numEras = this.collection.models.length;
+
+            // Full duration of the time series
+            var startMya = _.first(this.collection.models).get('mya');
+            var endMya = _.last(this.collection.models).get('mya');
+            // The final period *starts* in the year that it identifies.
+            // Since we want to display it as having a duration itself We
+            // apply a arbitrary duration. This is just a visual display since
+            // technically this period last back all the way into the Cambrian
+            var finalPeriodDuration = 30;
+            var fullDuration = Math.abs(startMya) + endMya +
+                finalPeriodDuration;
+            var fullWidth = 1860;
+            //console.log('Full duration', fullDuration);
+
+            // Loop through the collection and build the timeline from the eras
+            _.each(this.collection.models, function (model, i, list) {
+
+                // Make the divs for the timeline
+                var eraClass = 'era-' + i;
+                var newDiv = $("<div/>")
+                    .addClass('era')
+                    .addClass(eraClass)
+                    .html('&nbsp;');
+                $('#timeline').append(newDiv);
+
+                // Find the length of each era
+                // Treat the last one as an arbitrary length
+                var nextMya = '';
+                if (i !== (numEras - 1)) {
+                    nextMya = list[i + 1].get('mya');
+                    // Add the duration value to the model
+                    model.attributes.eraDuration = nextMya - model.get('mya');
+                } else {
+                    // TODO Put this in as a constant up top
+                    model.attributes.eraDuration = 10;
+                }
+
+                // Calculate the right boundaries based on the durations
+                var eraWidth = Math.round(
+                    (model.attributes.eraDuration / fullDuration) * fullWidth
+                );
+                //console.log('ID = ' + model.cid +
+                            //', description = ' + model.get('description') +
+                            //', width = ' + eraWidth);
+
+                if (i === 0) {
+                    model.attributes.rightBoundary = eraWidth;
+                } else if (i !== (numEras - 1)) {
+                    model.attributes.rightBoundary =
+                        list[i - 1].attributes.rightBoundary + eraWidth;
+                } else {
+                    // JS and CSS math is terrible
+                    // We just have to tell it that the end is here
+                    model.attributes.rightBoundary = 1860;
+                }
+
+                // Store the interval in the model so that we can reference
+                // different eras in events
+                model.attributes.interval = i;
+
+                // Add width
+
+                //console.log(eraWidth);
+                $('.' + eraClass).css('width', eraWidth + 'px');
+
+                // Add color
+                $('.' + eraClass).css("background", model.get('c'));
+
+            });
+
+            // Debug check
+            //_.each(this.collection.models, function (model, i, list){
+                //console.log('Mya: ' + model.get('mya') +
+                            ////'Desc.: ' + model.get('description') +
+                            //', Right bound: ' + model.get('rightBoundary'));
+            //});
+
+        },
+
+        // TODO - In the future, do click checking
+        cycleImage: function () {
+            //console.log('Click');
+        },
+
+        mousemove: function (e) {
+
+            // Get mouse position
+            var xPos = event.pageX - this.mapPos.left;
+            var yPos = event.pageX - this.mapPos.top;
+            //console.log("Mouse coordinates", xPos + ", " + yPos);
+
+            // For debugging
+            var mousePos = xPos.toFixed(2) + 'px, ' + yPos.toFixed(2) + 'px';
+            //console.log('Mouse pos', mousePos);
+
+            // Get the model for the era that we are hovering over.
+            var currentEra = _.first(
+                this.collection.filter(function (model) {
+                    if (xPos <= model.get('rightBoundary')) {
+                        return true;
+                    }
+                })
+            );
+
+            // Move the background image "interval" numbers of times
+            // TODO var the pixel width
+            var interval = currentEra.get('interval');
+            var intervalMultiplier = 0;
+            if (interval !== 0) {
+                intervalMultiplier = interval * -1860;
+            }
+
+            // Set the current image based on the mouse position interval
+            var currentMya = currentEra.get('mya');
+            var currentPeriod = currentEra.get('description');
+
+            // We use css to change the image since it's lots faster than
+            // doing this with file replacement. Even locally.
+            $('#map').css('background-position', intervalMultiplier);
+
+            // Indicate our current frame in the timeline
+            $(".era").removeClass("era-active");
+            $('.era-' + interval).addClass('era-active');
+
+            // Display debug information
+            $('#info').html(' - Mouse: ' + mousePos +
+                            ', Interval: ' + interval +
+                            ', Mya: ' + currentMya +
+                            ', Period: ' + currentPeriod +
+                            ', intervalMultiplier: ' + intervalMultiplier);
+        }
+
+    });
+
+    var mapView = new MapView();
+
+})(jQuery);
