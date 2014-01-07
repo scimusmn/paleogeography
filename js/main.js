@@ -100,9 +100,8 @@
             // Add the collection to the this object.
             this.collection = new History(eras);
 
-            // Get some details about the map that we only need to get once.
-            this.map = $("#map");
-            this.mapPos = this.map.position();
+            // Get the map position on the page.
+            this.mapPos = $("#map").position();
 
             // Run the render function.
             // I think this is part of the pattern convention.
