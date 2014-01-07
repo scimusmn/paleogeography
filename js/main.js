@@ -23,36 +23,36 @@
         { mya: -50, description: '50 million years in the future' },
         { mya: -3, description: '3 million years in the future' },
         { mya: 0, description: 'Present day' },
-        { mya: 5, description: 'Pleistocene' },
-        { mya: 12, description: 'Holocene' },
-        { mya: 20, description: 'Miocene' },
-        { mya: 35, description: 'Late Eocene' },
-        { mya: 50, description: 'Eocene' },
-        { mya: 65, description: 'KT Boundary' },
-        { mya: 75, description: 'Later Cretaceous' },
-        { mya: 90, description: 'Late Cretaceous' },
-        { mya: 105, description: 'Early Cretaceous' },
-        { mya: 120, description: 'Earlier Cretaceous' },
-        { mya: 150, description: 'Late Jurassic' },
-        { mya: 170, description: 'Middle Triasic' },
-        { mya: 200, description: 'Late Triasic' },
-        { mya: 220, description: 'Late Triasic' },
-        { mya: 240, description: 'Middle Triasic' },
-        { mya: 260, description: 'Late Permian' },
-        { mya: 280, description: 'Early Permian' },
-        { mya: 300, description: 'Late Pennsylvanian' },
-        { mya: 340, description: 'Middle Mississippian' },
-        { mya: 370, description: 'Late Devonian' },
-        { mya: 400, description: 'Early Devonian' },
-        { mya: 420, description: 'Late Silurian' },
-        { mya: 430, description: 'Middle Silurian' },
-        { mya: 440, description: 'Early Silurian' },
-        { mya: 450, description: 'Late Ordovician' },
-        { mya: 470, description: 'Middle Ordovician' },
-        { mya: 500, description: 'Late Cambrian' },
-        { mya: 540, description: 'Early Cambrian' },
-        { mya: 560, description: 'Late Protoerozoic' },
-        { mya: 600, description: 'Later Protoerozoic' }
+        { mya: 5, description: 'Pleistocene', c: '#FFF2C7'},
+        { mya: 12, description: 'Holocene', c: '#FEF2E0'},
+        { mya: 20, description: 'Miocene', c: '#FFFF00'},
+        { mya: 35, description: 'Late Eocene', c: '#fdcda1'},
+        { mya: 50, description: 'Eocene', c: '#fca773'},
+        { mya: 65, description: 'KT Boundary - Maastrichtian', c: '#f2fa8c'},
+        { mya: 75, description: 'Late Cretaceous - Campanian', c: '#e6f47f'},
+        { mya: 90, description: 'Late Cretaceous - Turonian', c: '#bfe35d'},
+        { mya: 105, description: 'Early Cretaceous - Albian', c: '#8ccd57'},
+        { mya: 120, description: 'Early Cretaceous - Aptian', c: '#BFE19F'},
+        { mya: 150, description: 'Late Jurassic', c: '#97E3FA'},
+        { mya: 170, description: 'Middle Jurassic', c: '#34D1EB'},
+        { mya: 200, description: 'Early Jurrasic', c: '#00B7EA'},
+        { mya: 220, description: 'Late Triasic', c: '#C698C2'},
+        { mya: 240, description: 'Middle Triasic', c: '#BF7CB1'},
+        { mya: 260, description: 'Late Permian', c: '#FEAF97'},
+        { mya: 280, description: 'Early Permian', c: '#F76E54'},
+        { mya: 300, description: 'Late Pennsylvanian', c: '#8AC6C3'},
+        { mya: 340, description: 'Middle Mississippian', c: '#619D7E'},
+        { mya: 370, description: 'Late Devonian', c: '#F4E0A9'},
+        { mya: 400, description: 'Early Devonian', c: '#EFB063'},
+        { mya: 420, description: 'Late Silurian', c: '#E4F2E6'},
+        { mya: 430, description: 'Middle Silurian', c: '#B4E5DB'},
+        { mya: 440, description: 'Early Silurian', c: '#7ED7C6'},
+        { mya: 450, description: 'Late Ordovician', c: '#5ECCA9'},
+        { mya: 470, description: 'Middle Ordovician', c: '#00BD97'},
+        { mya: 500, description: 'Late Cambrian', c: '#A1CF9B'},
+        { mya: 540, description: 'Early Cambrian', c: '#8AB584'},
+        { mya: 560, description: 'Late Protoerozoic', c: '#FED67B'},
+        { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'}
     ];
 
     /**
@@ -115,10 +115,6 @@
              * Build the timeline
              */
 
-            // Initialize a Color object from the color.js library.
-            // This will be the base color for the timeline.
-            var baseColor = Color("#300006");
-
             // Number of eras in our collection
             var numEras = this.collection.models.length;
 
@@ -144,7 +140,7 @@
                     .addClass('era')
                     .addClass(eraClass)
                     .html('&nbsp;');
-                $('#timeline').append($newDiv);
+                $('#timeline').append(newDiv);
 
                 // Find the length of each era
                 // Treat the last one as an arbitrary length
@@ -187,9 +183,7 @@
                 $('.' + eraClass).css('width', eraWidth + 'px');
 
                 // Add color
-                var periodColor = baseColor.lighten(0.07);
-                baseColor = Color(periodColor.hexString());
-                $('.' + eraClass).css("background", periodColor.hexString());
+                $('.' + eraClass).css("background", model.get('c'));
 
             });
 
