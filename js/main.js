@@ -126,7 +126,10 @@
             var fullDuration = finalPeriodDuration + Math.abs(startMya) +
                 Math.abs(endMya);
             var fullWidth = 1860;
-            console.log('Full duration', fullDuration);
+            // General fudge factor for how long we'd like the final period
+            // last. We have to define this since there isn't a final bound
+            // to calculate this from.
+            var finalDuration = 50;
 
             // Loop through the collection and build the timeline from the eras
             _.each(this.collection.models, function (model, i, list) {
@@ -148,7 +151,7 @@
                     model.attributes.eraDuration = model.get('mya') - nextMya;
                 } else {
                     // TODO Put this in as a constant up top
-                    model.attributes.eraDuration = 10;
+                    model.attributes.eraDuration = finalDuration;
                 }
 
                 // Calculate the right boundaries based on the durations
