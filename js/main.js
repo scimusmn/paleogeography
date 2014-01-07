@@ -140,7 +140,7 @@
 
                 // Append divs for the timeline
                 var eraClass = 'era-' + i;
-                var $newDiv = $("<div/>")
+                var newDiv = $("<div/>")
                     .addClass('era')
                     .addClass(eraClass)
                     .html('&nbsp;');
