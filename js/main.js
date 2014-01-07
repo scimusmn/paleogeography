@@ -135,10 +135,10 @@
             var fullWidth = 1860;
             //console.log('Full duration', fullDuration);
 
-            // Build the timeline from the eras in our collection
+            // Loop through the collection and build the timeline from the eras
             _.each(this.collection.models, function (model, i, list) {
 
-                // Append divs for the timeline
+                // Make the divs for the timeline
                 var eraClass = 'era-' + i;
                 var newDiv = $("<div/>")
                     .addClass('era')
@@ -146,8 +146,8 @@
                     .html('&nbsp;');
                 $('#timeline').append($newDiv);
 
-                // Find the length of each era.
-                // Treat the last one as an arbitrary length.
+                // Find the length of each era
+                // Treat the last one as an arbitrary length
                 var nextMya = '';
                 if (i !== (numEras - 1)) {
                     nextMya = list[i + 1].get('mya');
