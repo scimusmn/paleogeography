@@ -169,7 +169,7 @@
                 } else {
                     // JS and CSS math is terrible
                     // We just have to tell it that the end is here
-                    model.attributes.rightBoundary = 1860;
+                    model.attributes.rightBoundary = fullWidth;
                 }
 
                 // Store the interval in the model so that we can reference
