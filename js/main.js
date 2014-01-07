@@ -158,28 +158,32 @@
                 var eraWidth = (
                     (model.attributes.eraDuration / fullDuration) * fullWidth
                 );
-                console.log('ID = ' + model.cid +
-                            ', description = ' + model.get('description') +
-                            ', width = ' + eraWidth);
 
                 if (i === 0) {
+                    // First
                     model.attributes.rightBoundary = eraWidth;
                 } else if (i !== (numEras - 1)) {
+                    // All but last
                     model.attributes.rightBoundary =
                         list[i - 1].attributes.rightBoundary + eraWidth;
                 } else {
-                    // JS and CSS math is terrible
-                    // We just have to tell it that the end is here
+                    // Last era
                     model.attributes.rightBoundary = fullWidth;
                 }
+
+                //console.log('ID = ' + model.cid +
+                            ////', description = ' + model.get('description') +
+                            //', Mya = ' + model.get('mya') +
+                            //', width = ' + eraWidth +
+                            //', rightBoundary = ' + model.get('rightBoundary'));
 
                 // Store the interval in the model so that we can reference
                 // different eras in events
                 model.attributes.interval = i;
 
                 // Add width
-
-                //console.log(eraWidth);
+                // Only works in Chrome and Safari
+                // TODO - make this cross browser
                 $('.' + eraClass).css('width', eraWidth + 'px');
 
                 // Add color
