@@ -8,7 +8,6 @@
     // TODO - Build this into Backbone
     document.getElementById('map').ondragstart = function () {
         return false;
-        console.log('test');
     };
 
     /**
