@@ -13,6 +13,8 @@
     background:transparent;
 }
 
+selector { cursor: none; }
+
 body{
   background: #444;
   padding-top: 40px;
@@ -61,13 +63,15 @@ body{
 }
 
 #timeline-indicator {
-  top: 34px;
+  top: 12px;
   position: fixed;
 }
+
 #timeline-label {
   font-size: 1.2em;
   text-align: center;
 }
+
 .timeline-pointer {
   color: white;
   margin-top: -5px;
