@@ -120,9 +120,7 @@
 
             // Full duration of the time series
             var startMya = _.first(this.collection.models).get('mya');
-            console.log(startMya);
             var endMya = _.last(this.collection.models).get('mya');
-            console.log(endMya);
             // Make the future last for 50 extra years.
             var finalPeriodDuration = 50;
             var fullDuration = finalPeriodDuration + Math.abs(startMya) +
