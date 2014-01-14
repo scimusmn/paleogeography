@@ -22,8 +22,8 @@ body{
 
 #map {
   width:1860px;
-  height:930px;
-  display:inline-block;
+  height: 930px;
+  display: block;
   background-image: url('../img/blakey/montage.png');
 }
 
