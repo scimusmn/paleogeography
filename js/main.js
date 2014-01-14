@@ -203,8 +203,8 @@
                             ////'Desc.: ' + model.get('description') +
                             //', Right bound: ' + model.get('rightBoundary'));
             //});
-            $('.timeline-pointer').css(
-                'left', ($('#timeline-indicator').width() / 2) - 15);
+            //$('.timeline-pointer').css(
+                //'left', ($('#timeline-indicator').width() / 2) - 15);
             $('#timeline-label').html('Present day');
             $('#timeline-indicator').css('left', '1225px');
             $('#map').css('background-position', 30 * -1860);
@@ -264,18 +264,18 @@
                             //', intervalMultiplier: ' + intervalMultiplier);
 
             // Timeline label
-            console.log();
             $('.timeline-pointer').css(
                 'left', ($('#timeline-indicator').width() / 2) - 15);
             var timelineLabel = '';
             if (currentMya > 0) {
-                timelineLabel = currentPeriod + '<br />' +
-                    currentMya + ' million years ago';
+                timelineLabel = '<span class="mya">' +
+                    currentMya + ' million years ago' + '</span>' +
+                    '<br />' + currentPeriod;
             } else if (currentMya  == 0) {
                 timelineLabel = currentPeriod
             } else {
-                timelineLabel = -currentMya +
-                    ' million years <br />in the future';
+                timelineLabel = '<span class="mya">' +
+                    -currentMya + ' million years <br />in the future</span>';
             }
             $('#timeline-label').html(timelineLabel);
             $('#timeline-indicator').css(
