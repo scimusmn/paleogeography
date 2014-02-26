@@ -48,6 +48,11 @@ body{
   border-right: none;
 }
 
+
+h2 {
+  font-family: 'chalkboard';
+}
+
 #sidebar {
   background: rgba(0, 0, 0, 0.8);
   color: #FFF;
