@@ -10,6 +10,8 @@
         return false;
     };
 
+
+
     /**
      * Static Paleogeography images
      *
@@ -89,6 +91,8 @@
         // Run the cycleImage function when the main image is clicked.
         // Eventually we'll add a click and drag event.
         events: {
+            'click .switch-to-french': 'switchToFrench',
+            'click .switch-to-english': 'switchToEnglish',
             'click #map': 'cycleImage',
             'mousemove': 'mousemove'
         },
@@ -215,6 +219,17 @@
         cycleImage: function () {
             //console.log('Click');
         },
+
+        switchToFrench: function (e) {
+            $('#sidebar-english').hide();
+            $('#sidebar-french').show();
+        },
+
+        switchToEnglish: function (e) {
+            $('#sidebar-french').hide();
+            $('#sidebar-english').show();
+        },
+
 
         mousemove: function (e) {
 
