@@ -16,8 +16,8 @@
      * Static Paleogeography images
      */
     var eras = [
-        { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'},
-        { mya: 560, description: 'Late Protoerozoic', c: '#FED67B'},
+        { mya: 600, description: 'Neo-proterozoic', c: '#FED67B'},
+        { mya: 560, description: 'Late Proterozoic', c: '#FED67B'},
         { mya: 540, description: 'Early Cambrian', c: '#8AB584'},
         { mya: 500, description: 'Late Cambrian', c: '#A1CF9B'},
         { mya: 470, description: 'Middle Ordovician', c: '#00BD97'},
@@ -33,7 +33,7 @@
         { mya: 260, description: 'Late Permian', c: '#FEAF97'},
         { mya: 240, description: 'Middle Triassic', c: '#BF7CB1'},
         { mya: 220, description: 'Late Triassic', c: '#C698C2'},
-        { mya: 200, description: 'Early Jurrasic', c: '#00B7EA'},
+        { mya: 200, description: 'Early Jurassic', c: '#00B7EA'},
         { mya: 170, description: 'Middle Jurassic', c: '#34D1EB'},
         { mya: 150, description: 'Late Jurassic', c: '#97E3FA'},
         { mya: 120, description: 'Early Cretaceous - Aptian', c: '#BFE19F'},
