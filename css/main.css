@@ -82,6 +82,17 @@ h2 {
   display: none;
 }
 
+.switch-to-english,
+.switch-to-french {
+  float: right;
+  margin: 25px 0 10px 10px;
+  padding: 5px 10px;
+  font-size: 1.3em;
+  background: #333;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #AAA;
+}
+
 #timeline-indicator {
   top: 940px;
   position: fixed;
