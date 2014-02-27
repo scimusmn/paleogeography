@@ -14,8 +14,6 @@
 
     /**
      * Static Paleogeography images
-     *
-     * Maybe these should be broken out in another file?
      */
     var eras = [
         { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'},
