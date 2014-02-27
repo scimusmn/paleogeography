@@ -61,7 +61,8 @@ h2 {
   font-family: 'chalkboard';
 }
 
-#sidebar {
+#sidebar-english,
+#sidebar-french {
   background: rgba(0, 0, 0, 0.8);
   color: #FFF;
   padding: 10px 50px 10px 75px;
@@ -69,10 +70,16 @@ h2 {
   top: 500px;
   width: 500px;
 }
-#sidebar p {
+
+#sidebar-english p,
+#sidebar-french p {
   font-size: 1.2em;
   font-weight: 200;
   letter-spacing: 1px;
+}
+
+#sidebar-french {
+  display: none;
 }
 
 #timeline-indicator {

@@ -10,10 +10,10 @@
         return false;
     };
 
+
+
     /**
      * Static Paleogeography images
-     *
-     * Maybe these should be broken out in another file?
      */
     var eras = [
         { mya: 600, description: 'Neo-protoerozoic', c: '#FED67B'},
@@ -31,8 +31,8 @@
         { mya: 300, description: 'Late Pennsylvanian', c: '#8AC6C3'},
         { mya: 280, description: 'Early Permian', c: '#F76E54'},
         { mya: 260, description: 'Late Permian', c: '#FEAF97'},
-        { mya: 240, description: 'Middle Triasic', c: '#BF7CB1'},
-        { mya: 220, description: 'Late Triasic', c: '#C698C2'},
+        { mya: 240, description: 'Middle Triassic', c: '#BF7CB1'},
+        { mya: 220, description: 'Late Triassic', c: '#C698C2'},
         { mya: 200, description: 'Early Jurrasic', c: '#00B7EA'},
         { mya: 170, description: 'Middle Jurassic', c: '#34D1EB'},
         { mya: 150, description: 'Late Jurassic', c: '#97E3FA'},
@@ -89,6 +89,8 @@
         // Run the cycleImage function when the main image is clicked.
         // Eventually we'll add a click and drag event.
         events: {
+            'click .switch-to-french': 'switchToFrench',
+            'click .switch-to-english': 'switchToEnglish',
             'click #map': 'cycleImage',
             'mousemove': 'mousemove'
         },
@@ -215,6 +217,17 @@
         cycleImage: function () {
             //console.log('Click');
         },
+
+        switchToFrench: function (e) {
+            $('#sidebar-english').hide();
+            $('#sidebar-french').show();
+        },
+
+        switchToEnglish: function (e) {
+            $('#sidebar-french').hide();
+            $('#sidebar-english').show();
+        },
+
 
         mousemove: function (e) {
 
