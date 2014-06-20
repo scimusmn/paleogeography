@@ -10,8 +10,6 @@
         return false;
     };
 
-
-
     /**
      * Static Paleogeography images
      */
@@ -44,10 +42,10 @@
         { mya: 50, description: 'Eocene', c: '#fca773'},
         { mya: 35, description: 'Late Eocene', c: '#fdcda1'},
         { mya: 20, description: 'Miocene', c: '#FFFF00'},
-        { mya: 12, description: 'Holocene', c: '#FEF2E0'},
-        { mya: 5, description: 'Pleistocene', c: '#FFF2C7'},
+        { mya: .4, description: 'Pleistocene', c: '#FFF579'},
+        { mya: .050, description: 'Pleistocene', c: '#FFEBA7'},
+        { mya: .012, description: 'Holocene', c: '#FFEDD8'},
         { mya: 0, description: 'Present day', c: '#fef2e0'},
-        { mya: -3, description: '3 million years in the future', c: '#ccc' },
         { mya: -50, description: '50 million years in the future', c: '#bbb'},
         { mya: -100, description: '100 million years in the future', c: '#b2b2b2'},
         { mya: -150, description: '150 million years in the future', c: '#aaa' },
@@ -127,11 +125,11 @@
             var finalPeriodDuration = 50;
             var fullDuration = finalPeriodDuration + Math.abs(startMya) +
                 Math.abs(endMya);
-            var fullWidth = 1860;
+            var fullWidth = 1838;
             // General fudge factor for how long we'd like the final period
             // last. We have to define this since there isn't a final bound
             // to calculate this from.
-            var finalDuration = 50;
+            var finalDuration = 54;
 
             // Loop through the collection and build the timeline from the eras
             _.each(this.collection.models, function (model, i, list) {
@@ -160,6 +158,13 @@
                 var eraWidth = (
                     (model.attributes.eraDuration / fullDuration) * fullWidth
                 );
+                //console.log(nextMya, eraWidth);
+                /**
+                 * Make very small eras visible
+                 */
+                if ( eraWidth < 1 ) {
+                    eraWidth = 5;
+                }
 
                 if (i === 0) {
                     // First
@@ -280,10 +285,14 @@
             $('.timeline-pointer').css(
                 'left', ($('#timeline-indicator').width() / 2) - 15);
             var timelineLabel = '';
-            if (currentMya > 0) {
+            //console.log("Current MYA", currentMya);
+            if (currentMya > 1) {
                 timelineLabel = '<span class="mya">' +
                     currentMya + ' million years ago' + '</span>' +
                     '<br />' + currentPeriod;
+            } else if (currentMya > 0 && currentMya < 1) {
+                timelineLabel = '<span class="mya">' + (currentMya * 1000) +
+                    ' thousand years ago</span><br />' + currentPeriod;
             } else if (currentMya  == 0) {
                 timelineLabel = currentPeriod
             } else {
