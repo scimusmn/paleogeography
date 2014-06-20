@@ -14,11 +14,11 @@
 }
 
 *::-moz-selection {
-    background:transparent;
+  background:transparent;
 }
 
 *::-webkit-selection {
-    background:transparent;
+  background:transparent;
 }
 
 selector { cursor: none; }
